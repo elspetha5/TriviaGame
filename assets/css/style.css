@@ -1,19 +1,21 @@
 body {
     text-align: center;
     margin: auto;
+    background-image: url("../images/broadway.jpg")
 }
 
 #box {
     margin: 30px 20%;
     height: 550px;
     padding: 50px;
-    background: rgba(131, 42, 42, 0.952);
+    background: rgba(131, 42, 42, 0.970);
+    border: 5px solid rgb(49, 49, 49);
 }
 
 h1 {
     font-family: 'Anton', sans-serif;
     font-size: 50px;
-    margin: 5px 5% 125px;
+    margin: 5px 5% 40px;
     padding: 25px;
     background: rgb(66, 66, 66);
     color: rgb(250, 202, 43);
@@ -30,7 +32,8 @@ h1 {
 }
 
 h2 {
-    font-family: 'Anton', sans-serif;
+    font-family: 'Francois One', sans-serif;
+    color: white;
     font-size: 25px;
     margin: 20px;
     padding: 10px;
@@ -38,6 +41,7 @@ h2 {
 
 p {
     font-family: 'Francois One', sans-serif;
+    color: white;
     font-size: 20px;
     padding: 10px;
     margin: 10px;

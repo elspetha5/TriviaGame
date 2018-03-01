@@ -1,5 +1,10 @@
 $(document).ready(function (){
 // How do we start the game?
+$("#start").on("click", function(){
+    $("#start").hide();
+    $("#q1").appendTo("#questions").removeAttr("hidden");
+
+})
     // user clicks start button
     // timer appears on screen, set at 30 seconds
         // applies only to current question, not whole game
