@@ -39,6 +39,27 @@ h2 {
     padding: 10px;
 }
 
+#timer {
+    font-family: 'Francois One', sans-serif;
+    color: white;
+    font-size: 17px;
+    padding: 5px;
+    margin: 5px;
+}
+
+#time {
+    font-size: 20px;
+    padding: 5px;
+}
+
+.pink {
+    color: rgb(253, 109, 133);
+}
+
+.red {
+    color: red;
+}
+
 p {
     font-family: 'Francois One', sans-serif;
     color: white;
