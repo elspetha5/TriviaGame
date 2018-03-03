@@ -21,7 +21,7 @@
 
         <div id="timer" hidden>Time Remaining: <span id="time">30</span> seconds</div>
 
-        <div id="questions"></div>
+        <div id="text"></div>
 
     </div>
 
@@ -29,13 +29,13 @@
         <h2>In the broadway version of this classic Disney movie, one of the main characters sings, "Is this home? Am I here
             for a day or forever? Shut away from the world until who knows when..." What show are these lyrics from?
         </h2>
-        <p id="correct1">
+        <p class="guess" id="correct1">
             <i>Beauty and the Beast</i>
         </p>
-        <p>
+        <p class="guess" id="incorrect1">
             <i>Cinderella</i>
         </p>
-        <p>
+        <p class="guess" id="incorrect1">
             <i>Snow White</i>
         </p>
     </div>
@@ -43,36 +43,36 @@
     <div id="q2" hidden>
         <h2>"You gotta be sincere..." is which character's catchphrase from the 1960 Elvis inspired Broadway show
             <i>Bye Bye Birdie</i>?</h2>
-        <p>Albert Peterson</p>
-        <p id="correct2">Conrad Birdie</p>
-        <p>Hugo Peabody</p>
+        <p class="guess" id="incorrect2">Albert Peterson</p>
+        <p class="guess" id="correct2">Conrad Birdie</p>
+        <p class="guess" id="incorrect2">Hugo Peabody</p>
     </div>
 
     <div id="q3" hidden>
         <h2>Which famous folk singer-songwriter is the 2013 musical
             <i>Beautiful</i> about?</h2>
-        <p>James Taylor</p>
-        <p>Joni Mitchell</p>
-        <p id="correct3">Carole King</p>
+        <p class="guess" id="incorrect3">James Taylor</p>
+        <p class="guess" id="incorrect3">Joni Mitchell</p>
+        <p class="guess" id="correct3">Carole King</p>
     </div>
 
     <div id="q4" hidden>
         <h2>Does the character in
             <i>Les Miserables</i> that sings, "I dreamed a dream in time gone by..." live to the end of the musical?</h2>
-        <p>Yes</p>
-        <p id="correct4">No</p>
-        <p>Musical doesn't tell us</p>
+        <p class="guess" id="incorrect4">Yes</p>
+        <p class="guess" id="correct4">No</p>
+        <p class="guess" id="incorrect4">Musical doesn't tell us</p>
     </div>
 
     <div id="q5" hidden>
         <h2>"Just stay alive, that would be enough..." sings Eliza Schuyler in this hit 2015 musical:</h2>
-        <p id="correct5">
+        <p class="guess" id="correct5">
             <i>Hamilton</i>
         </p>
-        <p>
+        <p class="guess" id="incorrect5">
             <i>Dear Evan Hansen</i>
         </p>
-        <p>
+        <p class="guess" id="incorrect5">
             <i>The Bridges of Madison County</i>
         </p>
     </div>
@@ -80,18 +80,23 @@
     <div id="q6" hidden>
         <h2>Little Red Riding Hood sings these lyrics in the mixed fairytale muscial
             <i>Into the Woods</i>:</h2>
-        <p>"Better run along home, and avoid the collision."</p>
-        <p>"And she gives you food and she gives you rest, and she draws you close to her giant chest."</p>
-        <p id="correct6">"...and though scary is exciting, nice is different than good."</p>
+        <p class="guess" id="incorrect6">"Better run along home, and avoid the collision."</p>
+        <p class="guess" id="incorrect6">"And she gives you food and she gives you rest, and she draws you close to her giant chest."</p>
+        <p class="guess" id="correct6">"...and though scary is exciting, nice is different than good."</p>
     </div>
 
     <div id="q7" hidden>
         <h2>"I just kissed a girl named Maria, and suddenly I've found how wonderful a sound can be..." sings which character
             from the classic 1957 musical
             <i>West Side Story</i>?</h2>
-        <p>Bernardo</p>
-        <p>Riff</p>
-        <p id="correct7">Tony</p>
+        <p class="guess" id="incorrect7">Bernardo</p>
+        <p class="guess" id="incorrect7">Riff</p>
+        <p class="guess" id="correct7">Tony</p>
+    </div>
+
+    <div id="answer" hidden>
+        <p id="guess"></p>
+        <p>The correct answer is: <span id="right"></span></p>
     </div>
 
     <script src="assets/javascript/app.js"></script>
