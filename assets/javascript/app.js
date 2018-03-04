@@ -1,33 +1,50 @@
 $(document).ready(function () {
-
+    // starts the timer at 30 seconds
     var time = 30;
+    // runs the timer
     var count;
-    var id;
+    // stores the current question number
     var qNumber = 1;
-    var correct = $("#correct" + qNumber);
-    var rightAnswer = correct.text();
+    // stores the "id" of correct answer
+    var correctID;
+    // stores the text of the correct answer
+    var rightAnswer;
+    // stores "id" of the answer the user clicked on
     var userGuess;
 
     $(".guess").on("click", function () {
         userGuess = $(this).attr("id");
         clearInterval(count);
         answer();
-        console.log("qNumber: " + qNumber);
     });
 
     function nextQ() {
-        
+        $("#answer").hide();
+        if (qNumber < 8) {
+            time = 30;
+            count = setInterval(timer, 1000);
+            count
+            $("#q" + qNumber).appendTo("#text").removeAttr("hidden");
+        } else {
+            $("#timer").hide();
+
+        }
     };
 
     function answer() {
         $("#q" + qNumber).hide();
-        console.log ("userGuess: " + userGuess);
+        correctID = $("#correct" + qNumber);
+        rightAnswer = correctID.text()
+        console.log(rightAnswer);
         if (userGuess === ("correct" + qNumber)) {
             $("#guess").text("That is correct!");
         } else { $("#guess").text("Sorry, wrong answer.") };
         $("#right").text(rightAnswer)
-        $("#answer").appendTo("#text").removeAttr("hidden");
+        $("#answer").appendTo("#text").removeAttr("hidden").show();
         qNumber++;
+        setTimeout(function () {
+            nextQ();
+        }, 5000);
     };
 
     function timer() {
