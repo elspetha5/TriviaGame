@@ -2,29 +2,34 @@ $(document).ready(function () {
 
     var time = 30;
     var count;
-
+    var id;
     var qNumber = 1;
-    var cNumber = 1;
-    var correct = $("#correct" + cNumber);
+    var correct = $("#correct" + qNumber);
     var rightAnswer = correct.text();
+    var userGuess;
 
-    
-    var userGuess = $(".guess").click(function() {
-        $(this).attr("id");
+    $(".guess").on("click", function () {
+        userGuess = $(this).attr("id");
+        clearInterval(count);
+        answer();
+        console.log("qNumber: " + qNumber);
     });
-    console.log("userGuess:", userGuess);
+
+    function nextQ() {
+        
+    };
 
     function answer() {
         $("#q" + qNumber).hide();
-         qNumber++;
-        // if (userGuess === correct) {
-        //  $("guess").text("That is correct!");
-        //} else {$("guess).text(""Sorry, wrong answer.")};
+        console.log ("userGuess: " + userGuess);
+        if (userGuess === ("correct" + qNumber)) {
+            $("#guess").text("That is correct!");
+        } else { $("#guess").text("Sorry, wrong answer.") };
         $("#right").text(rightAnswer)
-        cNumber++;
         $("#answer").appendTo("#text").removeAttr("hidden");
+        qNumber++;
     };
-    
+
     function timer() {
         time--;
         $("#time").text(time);
@@ -47,30 +52,31 @@ $(document).ready(function () {
         count
         // text on screen changes to first question
         $("#q" + qNumber).appendTo("#text").removeAttr("hidden");
-    })
+    });
+
 
 
     // applies only to current question, not whole game
 
     // What happens when we click an anwer?
 
-        // timer stops
-        // question disappears
-        // screen tells user if they were wrong or right
-        // if wrong gives correct answer
-        // after a set number of seconds screen will change to new question
+    // timer stops
+    // question disappears
+    // screen tells user if they were wrong or right
+    // if wrong gives correct answer
+    // after a set number of seconds screen will change to new question
 
     // What happens when the question timer runs out?
-        // timer stops at 0
-        // current question disappears
-        // screen says Out of Time!
-        // gives correct answer
-        // after a set number of seconds screen will change to new question
+    // timer stops at 0
+    // current question disappears
+    // screen says Out of Time!
+    // gives correct answer
+    // after a set number of seconds screen will change to new question
 
     // What happens at the end of the game?
-        // timer stops
-        // shows number of correct, incorrect, and unanswered questions
-        // Start Over button apears
-        // does NOT reload the page, resets the page
+    // timer stops
+    // shows number of correct, incorrect, and unanswered questions
+    // Start Over button apears
+    // does NOT reload the page, resets the page
 
 });
