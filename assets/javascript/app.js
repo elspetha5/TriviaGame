@@ -24,11 +24,11 @@ $(document).ready(function () {
         $("#directions").hide();
         $("#start").hide();
         // timer appears on screen, set at 30 seconds
-        $("#timer").removeAttr("hidden");
+        $("#timer").removeAttr("hidden").show();
         count = setInterval(timer, 1000);
         count
         // text on screen changes to first question
-        $("#q" + qNumber).appendTo("#text").removeAttr("hidden");
+        $("#q" + qNumber).appendTo("#text").removeAttr("hidden").show();
     });
 
     function timer() {
@@ -37,7 +37,6 @@ $(document).ready(function () {
         // What happens when the question timer runs out?
         if (time <= 0) {
             clearInterval(count);
-            $("#time").removeClass("red");
             answer();
         } else if (time <= 5) {
             $("#time").removeClass("pink").addClass("red");
@@ -74,15 +73,18 @@ $(document).ready(function () {
             $("#answer").appendTo("#text").removeAttr("hidden").show();
             numberTime++;
         };
+        $("#image" + qNumber).appendTo("#text").removeAttr("hidden").show();
         // gives correct answer
         qNumber++;
         // after a set number of seconds screen will change to new question
         setTimeout(function () {
             nextQ();
-        }, 1000);
+        }, 5000);
     };
 
     function nextQ() {
+        $("#time").removeClass("pink red");
+        $("#image" + (qNumber - 1)).hide();
         $("#guess").hide();
         $("#answer").hide();
         if (qNumber < 8) {
@@ -90,7 +92,7 @@ $(document).ready(function () {
             time = 30;
             count = setInterval(timer, 1000);
             count
-            $("#q" + qNumber).appendTo("#text").removeAttr("hidden");
+            $("#q" + qNumber).appendTo("#text").removeAttr("hidden").show();
             // What happens at the end of the game?
         } else {
             $("#timer").hide();
@@ -98,12 +100,12 @@ $(document).ready(function () {
             $("#numberCorrect").text(numberCorrect);
             $("#numberIncorrect").text(numberIncorrect);
             $("#numberTime").text(numberTime);
-            $("#score").appendTo("#text").removeAttr("hidden");
+            $("#score").appendTo("#text").removeAttr("hidden").show();
         }
     };
 
     $("#startOver").on("click", function() {
-        $("#text").empty();
+        $("#score").hide();
         time = 30;
         qNumber = 1;
         numberCorrect = 0;

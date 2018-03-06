@@ -5,8 +5,8 @@ body {
 }
 
 #box {
-    margin: 30px 20%;
-    height: 550px;
+    margin: 10px 20%;
+    height: 575px;
     padding: 50px;
     background: rgba(131, 42, 42, 0.970);
     border: 5px solid rgb(49, 49, 49);
@@ -15,11 +15,15 @@ body {
 h1 {
     font-family: 'Anton', sans-serif;
     font-size: 50px;
-    margin: 5px 5% 50px;
+    margin: 5px 5% 20px;
     padding: 25px;
     background: rgb(66, 66, 66);
     color: rgb(250, 202, 43);
     border: 10px dotted white;
+}
+
+#directions {
+    margin-top: 30px;
 }
 
 #start, #startOver {
@@ -51,7 +55,7 @@ h2 {
     color: white;
     font-size: 17px;
     padding: 5px;
-    margin: 5px 5px 30px;
+    margin: 0px 0px 20px;
 }
 
 #time {
@@ -93,4 +97,10 @@ p {
 #yourScore {
     text-align: left;
     margin-left: 25%;
+}
+
+img {
+    margin-top: 30px;
+    height: 200px;
+    border: 5px double white;
 }
