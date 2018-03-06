@@ -11,57 +11,17 @@ $(document).ready(function () {
     var rightAnswer;
     // stores "id" of the answer the user clicked on
     var userGuess;
-
-    $(".guess").on("click", function () {
-        userGuess = $(this).attr("id");
-        clearInterval(count);
-        answer();
-    });
-
-    function nextQ() {
-        $("#answer").hide();
-        if (qNumber < 8) {
-            time = 30;
-            count = setInterval(timer, 1000);
-            count
-            $("#q" + qNumber).appendTo("#text").removeAttr("hidden");
-        } else {
-            $("#timer").hide();
-
-        }
-    };
-
-    function answer() {
-        $("#q" + qNumber).hide();
-        correctID = $("#correct" + qNumber);
-        rightAnswer = correctID.text()
-        console.log(rightAnswer);
-        if (userGuess === ("correct" + qNumber)) {
-            $("#guess").text("That is correct!");
-        } else { $("#guess").text("Sorry, wrong answer.") };
-        $("#right").text(rightAnswer)
-        $("#answer").appendTo("#text").removeAttr("hidden").show();
-        qNumber++;
-        setTimeout(function () {
-            nextQ();
-        }, 5000);
-    };
-
-    function timer() {
-        time--;
-        $("#time").text(time);
-        if (time <= 0) {
-            clearInterval(count);
-            answer();
-        } else if (time <= 5) {
-            $("#time").removeClass("pink").addClass("red");
-        } else if (time <= 10) {
-            $("#time").addClass("pink");
-        }
-    };
+    // stores number of correct guesses
+    var numberCorrect = 0;
+    // stores number of incorrect guesses
+    var numberIncorrect = 0;
+    // stores number of times the timer ran out
+    var numberTime = 0;
+    
 
     // How do we start the game?
     $("#start").on("click", function () {
+        $("#directions").hide();
         $("#start").hide();
         // timer appears on screen, set at 30 seconds
         $("#timer").removeAttr("hidden");
@@ -71,28 +31,91 @@ $(document).ready(function () {
         $("#q" + qNumber).appendTo("#text").removeAttr("hidden");
     });
 
-
-
-    // applies only to current question, not whole game
+    function timer() {
+        time--;
+        $("#time").text(time);
+        // What happens when the question timer runs out?
+        if (time <= 0) {
+            clearInterval(count);
+            $("#time").removeClass("red");
+            answer();
+        } else if (time <= 5) {
+            $("#time").removeClass("pink").addClass("red");
+        } else if (time <= 10) {
+            $("#time").addClass("pink");
+        }
+    };
 
     // What happens when we click an anwer?
+    $(".guess").on("click", function () {
+        userGuess = $(this).attr("id");
+        // timer stops
+        clearInterval(count);
+        answer();
+    });
 
-    // timer stops
-    // question disappears
-    // screen tells user if they were wrong or right
-    // if wrong gives correct answer
-    // after a set number of seconds screen will change to new question
+    function answer() {
+        // question disappears
+        $("#q" + qNumber).hide();
+        correctID = $("#correct" + qNumber);
+        rightAnswer = correctID.text();
+        // screen tells user if they were wrong, right or out of time
+        if (userGuess === ("correct" + qNumber)) {
+            $("#guess").text("That is correct!").appendTo("#text").removeAttr("hidden").show();
+            numberCorrect++;
+        } else if (userGuess === ("incorrect" + qNumber)) {
+            $("#guess").text("Sorry, wrong answer.").appendTo("#text").removeAttr("hidden").show();
+            $("#right").text(rightAnswer);
+            $("#answer").appendTo("#text").removeAttr("hidden").show();
+            numberIncorrect++;
+        } else {
+            $("#guess").text("Out of time!").appendTo("#text").removeAttr("hidden").show();
+            $("#right").text(rightAnswer);
+            $("#answer").appendTo("#text").removeAttr("hidden").show();
+            numberTime++;
+        };
+        // gives correct answer
+        qNumber++;
+        // after a set number of seconds screen will change to new question
+        setTimeout(function () {
+            nextQ();
+        }, 1000);
+    };
 
-    // What happens when the question timer runs out?
-    // timer stops at 0
-    // current question disappears
-    // screen says Out of Time!
-    // gives correct answer
-    // after a set number of seconds screen will change to new question
+    function nextQ() {
+        $("#guess").hide();
+        $("#answer").hide();
+        if (qNumber < 8) {
+            $("#time").text("30");
+            time = 30;
+            count = setInterval(timer, 1000);
+            count
+            $("#q" + qNumber).appendTo("#text").removeAttr("hidden");
+            // What happens at the end of the game?
+        } else {
+            $("#timer").hide();
+            // shows number of correct, incorrect, and unanswered questions
+            $("#numberCorrect").text(numberCorrect);
+            $("#numberIncorrect").text(numberIncorrect);
+            $("#numberTime").text(numberTime);
+            $("#score").appendTo("#text").removeAttr("hidden");
+        }
+    };
 
-    // What happens at the end of the game?
-    // timer stops
-    // shows number of correct, incorrect, and unanswered questions
+    $("#startOver").on("click", function() {
+        $("#text").empty();
+        time = 30;
+        qNumber = 1;
+        numberCorrect = 0;
+        numberIncorrect = 0;
+        numberTime = 0;
+        $("#time").text("30");
+        $("#directions").text("Want to try again?").show();
+        $("#start").show();
+    });
+
+
+
     // Start Over button apears
     // does NOT reload the page, resets the page
 

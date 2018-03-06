@@ -17,6 +17,10 @@
     <div id="box">
         <h1>This is the Greatest Shoooowww- Tune Trivia</h1>
 
+        <h2 id="directions">Are you ready to test your show-tune acumen? You will have 30 seconds to answer each question 
+            before the time runs out. Good luck!
+        </h2>
+
         <div id="start">Start</div>
 
         <div id="timer" hidden>Time Remaining: <span id="time">30</span> seconds</div>
@@ -32,10 +36,10 @@
         <p class="guess" id="correct1">
             <i>Beauty and the Beast</i>
         </p>
-        <p class="guess" id="incorrect2">
+        <p class="guess" id="incorrect1">
             <i>Cinderella</i>
         </p>
-        <p class="guess" id="incorrect2">
+        <p class="guess" id="incorrect1">
             <i>Snow White</i>
         </p>
     </div>
@@ -94,10 +98,21 @@
         <p class="guess" id="correct7">Tony</p>
     </div>
 
-    <div id="answer" hidden>
-        <p id="guess"></p>
-        <p>The correct answer is: <span id="right"></span></p>
+    
+    <p id="guess" hidden></p>
+    <p id="answer" hidden>The correct answer is: <span id="right"></span></p>
+    
+
+    <div id="score" hidden>
+        <h2 id="scoresheet">Your Scoresheet</h2>
+        <div id="yourScore">
+            <h2>Correct: <span id="numberCorrect"></span></h2>
+            <h2>Incorrect: <span id="numberIncorrect"></span></h2>
+            <h2>Ran out of time: <span id="numberTime"></span></h2>
+        </div>
+        <div id="startOver">Start Over</div>
     </div>
+
 
     <script src="assets/javascript/app.js"></script>
 </body>
